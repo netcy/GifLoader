@@ -5,7 +5,9 @@ example:
 -------------------------
 
 
- var gifLoader = new GifLoader();
+ 
+    var gifLoader = new GifLoader();
+ 
     gifLoader.loadGif('./flow.gif',function (gif) {
       console.log(gif);
       var can = document.getElementById('test');
