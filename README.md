@@ -1,5 +1,8 @@
 # GifLoader
-GifLoader，把Gif分割成帧数据。  example:
+GifLoader，把Gif分割成帧数据。  
+改编了libgif的代码，https://github.com/buzzfeed/libgif-js 。 整理了代码，把相应的类整理出来，并提供接口。
+
+example:
 -------------------------
  var gifLoader = new GifLoader();
     gifLoader.loadGif('./flow.gif',function (gif) {
@@ -27,4 +30,4 @@ GifLoader，把Gif分割成帧数据。  example:
       loop(); 
     });
 -------------------------
-改编了libgif的代码。https://github.com/buzzfeed/libgif-js
+
