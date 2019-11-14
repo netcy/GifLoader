@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="./Stream.js"></script>
+  <script type="text/javascript" src="./GifLoader.js"></script>
+  <script type="text/javascript" src="./GifParser.js"></script>
+  <script type="text/javascript" src="./Gif.js"></script>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>
+    Example gif
+  </title>
+</head>
+
+<body>
+  <canvas id = 'test'></canvas><br>
+  <canvas id='test2'></canvas>
+  <script>
+    var gifLoader = new GifLoader();
+    gifLoader.loadGif('./flow.gif',function (gif) {
+      console.log(gif);
+      var can = document.getElementById('test');
+      can.width = gif.header.width;
+      can.height = gif.header.height;
+      var ctx = can.getContext('2d');
+      
+      var index = 0, lastTime = new Date().getTime();
+      function loop() {
+        var delay = gif.gce[0].delayTime || 5;
+        var now = new Date().getTime();
+        if(now - lastTime >= delay * 10){
+           ctx.putImageData(gif.frames[index].data,0,0);
+           index ++;
+           if(index >= gif.frames.length){
+           index = 0;
+           }
+           lastTime = now;
+        }
+       
+        requestAnimationFrame(loop);
+      }
+      loop(); 
+    });
+    // gifLoader.loadGif('./rub_test.gif',function (gif) {
+    //   console.log(gif);
+    //   var can = document.getElementById('test2');
+    //   can.width = gif.header.width;
+    //   can.height = gif.header.height;
+    //   var ctx = can.getContext('2d');
+      
+    //   var index = 0, lastTime = new Date().getTime();
+    //   function loop() {
+    //     var delay = gif.gce[0].delayTime || 5;
+    //     var now = new Date().getTime();
+    //     if(now - lastTime >= delay * 10){
+    //        ctx.putImageData(gif.frames[index].data,0,0);
+    //        index ++;
+    //        if(index >= gif.frames.length){
+    //        index = 0;
+    //        }
+    //        lastTime = now;
+    //     }
+       
+    //     requestAnimationFrame(loop);
+    //   }
+    //   loop(); 
+    // });
+  </script>
+  
+</body>
+
+</html>
