@@ -1,6 +1,6 @@
 # GifLoader
 
-GifLoader，把Gif分割成帧数据。  
+GifLoader，GifParser，把Gif分割成帧数据。  
 参考了libgif（ https://github.com/buzzfeed/libgif-js ）的代码 。 整理了代码，把相应的类整理出来，并提供接口。
 
 example:
